@@ -23,4 +23,17 @@ app.get('/request', async (req, res) => {
   res.json({name: 'ivan', age: '22'})
 });
 
+app.get('/users', (req, res) => {
+  const { spawn } = require('child_process');
+  spawn('python3', ['./script.py']);
+
+  const fs = require('fs');
+  fs.readFile('users.json', (err, data) => {
+    if (err) throw err;
+    let users = JSON.parse(data);
+    console.log(users)
+    res.json(users)
+  });
+});
+
 app.listen(1024);

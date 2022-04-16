@@ -4,6 +4,9 @@
     <button @click="fetchData()" class="button">Request</button>
     <p>Name: {{ data.name || "unknown" }}</p>
     <p>Age: {{ data.age || "unknown" }}</p>
+    <hr/>
+    <button @click="fetchUserData()" class="button">Request users</button>
+    {{userData}}
   </div>
 </template>
 
@@ -17,6 +20,7 @@ export default {
   data() {
     return {
       data: false,
+      userData: false
     };
   },
   methods: {
@@ -30,6 +34,11 @@ export default {
           console.log(err);
         });
     },
+    fetchUserData() {
+      axios.get("http://localhost:1024/users").then((res) => {
+        this.userData = res.data;
+      }).catch((err) => {console.log(err)})
+    }
   },
 };
 </script>
