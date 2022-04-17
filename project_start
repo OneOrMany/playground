@@ -1,0 +1,5 @@
+#! /usr/bin/env bash
+
+docker run -d -p 1024:1024 playground_backend 
+
+docker run -d -p 3000:3000 playground_frontend
