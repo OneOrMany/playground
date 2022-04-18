@@ -1,5 +1,8 @@
 pipeline {
     stages{
+        stage("checkout"){
+            checkout scm
+        }
         agent {
             docker {
                 image 'playground_frontend' 
