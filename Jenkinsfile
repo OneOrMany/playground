@@ -10,7 +10,6 @@ pipeline {
                 args '-p 1024:1024'
             }
         }
-        }
         stage("run tests"){
             steps {
                sh 'jest ./frontend/test.spec.js'
